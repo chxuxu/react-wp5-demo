@@ -3,7 +3,7 @@ webpack5 react demo
 #install
 ```js
 cnpm install webpack webpack-cli webpack-dev-server typescript ts-loader -D
-cnpm install less less-loader css-loader style-loader file-loader -D
+cnpm install less less-loader css-loader style-loader url-loader file-loader -D
 cnpm install html-webpack-plugin copy-webpack-plugin clean-webpack-plugin -D
 cnpm install babel-loader @babel/cli @babel/core  @babel/preset-env @babel/preset-react @babel/preset-typescript -D
 
