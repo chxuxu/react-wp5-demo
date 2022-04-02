@@ -10,7 +10,9 @@ cnpm install babel-loader @babel/cli @babel/core  @babel/preset-env @babel/prese
 cnpm install jest @types/jest @types/node @types/react @types/react-dom -D
 
 cnpm install react react-dom -S
-
+cnpm install antd -S
+cnpm install react-router react-router-dom -S
+cnpm install @types/react-router @types/react-router-dom -D
 ```
 #webpack.config.js
 ##loader

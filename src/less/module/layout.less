@@ -1,0 +1,29 @@
+@import "../base.less";
+.m-layout{
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  .header{
+    border-bottom: solid 1px @border-color;
+    width:100%;
+    min-height: 40px;
+  }
+  .main,.g-main{
+    height: 100%;
+    display: flex;
+    width:100%;
+    .sider{
+      height: 100%;
+      border-right: solid 1px @border-color;
+    }
+    .content{
+      height: 100%;
+      overflow: auto;
+    }
+  }
+  .footer{
+    min-height: 20px;
+    border-top: solid 1px @border-color;
+  }
+}

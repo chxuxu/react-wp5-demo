@@ -1,0 +1,37 @@
+.m-nav {
+  display: flex;
+
+  .nav-item {
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      padding: 5px 15px;
+      text-align: center;
+      color: #333;
+      border: solid 1px transparent;
+
+      &:hover {
+        background-color: @back-color;
+        color: #fff;
+      }
+    }
+  }
+
+  &.horizontal {
+    flex-direction: row;
+  }
+
+  &.vertical {
+    flex-direction: column;
+
+    a {
+      padding: 10px 5px;
+
+      &:hover {
+        background-color: @back-color;
+        color: #fff;
+      }
+    }
+  }
+}
