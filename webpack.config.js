@@ -63,17 +63,28 @@ module.exports = {
       }, {
         loader: "css-loader"
       }, {
-        loader: "less-loader"
+        loader: "less-loader",
+        options: {
+          lessOptions: {
+            javascriptEnabled: true,
+            minimize: true,
+            math: 'always'
+          }
+          
+        }
       }]
     }, {
-      test: /\.(js|jsx)$/,
+      test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
       use: [{
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          presets: ["@babel/env", "@babel/preset-react"]
+        }
       }]
 
     }, {
-      test: /\.(ts|tsx)$/,
+      test: /\.tsx?$/,
       exclude: /(node_modules|bower_components)/,
       use: [{
         loader: 'ts-loader'
@@ -81,7 +92,12 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".td", ".ts", ".tsx"]
+    extensions: ["*", ".js", ".jsx", ".td", ".ts", ".tsx"],
+    alias:{
+      //避免本地link调试时，react版本不统一的错误
+      react: path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
+    }
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -105,13 +121,15 @@ module.exports = {
   ],
   devServer: {
     static: [{
-      publicPath: "/",directory:"./dist"
+      publicPath: "/",
+      directory: "./dist"
     }, {
-      publicPath: "/",directory:"./static"
+      publicPath: "/",
+      directory: "./static"
     }],
     //contentBase: path.resolve(__dirname, 'dist'),
     port: 9000,
-     //本地服务输出给用户的页面里，资源文件地址的前缀路径,只有在你想要提供静态文件时才需要
+    //本地服务输出给用户的页面里，资源文件地址的前缀路径,只有在你想要提供静态文件时才需要
     historyApiFallback: true, //使得所有访问路径可以访问到首页
   },
 }
