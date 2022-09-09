@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Route, Link, Routes, BrowserRouter as Router, useNavigate } from 'react-router-dom';
-import { Layout, Nav } from "rexui";
 import Logo from "./header/Logo";
 import LoginInfo from "./header/LoginInfo";
 import HeadNav from "./header/HeadNav";
@@ -13,18 +12,16 @@ export interface IAppProps {
 
 function App(props: IAppProps) {
   return (<Router>
-    <Layout>
-      <Layout.Header>
-        <div className="g-header">
-          <Logo/>
-          <HeadNav/>
-          <LoginInfo/>
-        </div>
-      </Layout.Header>
-      <Layout.Main>
+    <div className='g-layout'>
+      <div className="g-header">
+        <Logo />
+        <HeadNav />
+        <LoginInfo />
+      </div>
+      <div className="g-main">
         <Routes>
           <Route path={"/"} element={<Home />}>
-            <Route path={"aaa"} element={<div><Nav/>这是home/aaa子路由的内容</div>}>
+            <Route path={"aaa"} element={<div>这是home/aaa子路由的内容</div>}>
             </Route>
           </Route>
           <Route path={"/home/*"} element={<Home />}>
@@ -33,11 +30,11 @@ function App(props: IAppProps) {
           <Route path={"/hooks/*"} element={<Hooks />}>
           </Route>
         </Routes>
-      </Layout.Main>
-      <Layout.Footer>
-        <FootInfo/>
-      </Layout.Footer>
-    </Layout>
+      </div>
+      <div className='g-footer'>
+        <FootInfo />
+      </div>
+    </div>
   </Router>
   );
 }

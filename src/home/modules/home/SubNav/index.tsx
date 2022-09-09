@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Nav } from "rexui";
 interface ISubNavProps {
   icon?: string
 }
@@ -13,7 +12,7 @@ export default function SubNav(props: ISubNavProps) {
     { name: "二级导航4", url: "/", key: "nav4" }]);
   return (
     <div className="m-HeadNav">
-      <Nav data={navs} pos="V"/>
+      
     </div>
   );
 }

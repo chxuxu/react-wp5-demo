@@ -13,10 +13,11 @@ module.exports = {
   entry: {
     home: "./src/home/index.js",
     page1: "./src/page1/index.js",
+    webapi: "./src/webapi/index.js",
   },
   output: {
     path: __dirname + "/dist",
-    filename: "[name].[contenthash].js",
+    filename: "[name]/[contenthash].js",
     clean: true
   },
   optimization: {
@@ -102,7 +103,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
-      filename: "index.html",
+      filename: "/home/index.html",
       template: "./src/home/index.html",
       inject: "body",
       chunks: ['home'],
@@ -110,10 +111,18 @@ module.exports = {
       publicPath: "/"
     }),
     new htmlWebpackPlugin({
-      filename: "page1.html",
+      filename: "/page1/index.html",
       template: "./src/page1/index.html",
       inject: "body",
       chunks: ['page1'],
+      scriptLoading: "blocking",
+      publicPath: "/"
+    }),
+    new htmlWebpackPlugin({
+      filename: "webapi/index.html",
+      template: "./src/webapi/index.html",
+      inject: "body",
+      chunks: ['webapi'],
       scriptLoading: "blocking",
       publicPath: "/"
     }),
@@ -130,6 +139,12 @@ module.exports = {
     //contentBase: path.resolve(__dirname, 'dist'),
     port: 9000,
     //本地服务输出给用户的页面里，资源文件地址的前缀路径,只有在你想要提供静态文件时才需要
-    historyApiFallback: true, //使得所有访问路径可以访问到首页
+    historyApiFallback:{
+      rewrites:[
+        {from:/^\/home/,to:'/home/index.html'},
+        {from:/^\/page1/,to:'/page1/index.html'},
+        {from:/^\/webapi/,to:'/webapi/index.html'}
+      ]
+    }// true, //使得所有访问路径可以访问到首页
   },
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Nav } from "rexui";
 interface IHeadNavProps {
   icon?: string
 }
@@ -13,7 +12,7 @@ export default function HeadNav(props: IHeadNavProps) {
     { name: "一级导航4", url: "/", key: "nav4" }]);
   return (
     <div className="m-HeadNav">
-      <Nav data={navs} />
+   
     </div>
   );
 }
